@@ -12,6 +12,10 @@ const Expenses = ({ lists }) => {
     setFilteredYear(selectedYear);
   };
 
+  const filteredExpenses = lists.filter((expense) => {
+    return expense.date.getFullYear().toString() === filteredYear;
+  });
+
   return (
     <div className="expenses">
       <div>
@@ -20,16 +24,20 @@ const Expenses = ({ lists }) => {
             selected={filteredYear}
             onChangeFilter={filterChangeHandler}
           />
-          {lists.map((list) => {
-            return (
-              <ExpenseItem
-                key={list.id}
-                title={list.title}
-                amount={list.amount}
-                date={list.date}
-              />
-            );
-          })}
+          {lists.length === 0 ? (
+            <p>No Expenses found.</p>
+          ) : (
+            filteredExpenses.map((expenses) => {
+              return (
+                <ExpenseItem
+                  key={expenses.id}
+                  title={expenses.title}
+                  amount={expenses.amount}
+                  date={expenses.date}
+                />
+              );
+            })
+          )}
         </Card>
       </div>
     </div>

@@ -26,6 +26,13 @@ const ExpenseForm = ({ saveExpenseData }) => {
       amount: +enteredAmount,
       date: new Date(enteredDate),
     };
+    if (
+      expenseData.title.trim().length &&
+      expenseData.amount.trim().length === 0
+    ) {
+      return;
+    }
+
     saveExpenseData(expenseData);
     setEnteredTitle('');
     setEnteredAmount('');

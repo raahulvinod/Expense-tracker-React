@@ -66,7 +66,7 @@ const ExpenseForm = ({ saveExpenseData }) => {
           />
         </div>
         <div className="new-expense__actions">
-          <button>Add Expense</button>
+          <button type="submit">Add Expense</button>
         </div>
       </div>
     </form>
